@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="header">
+    <h2>Cadastro de Quarto</h2>
+  </div>
+  <div class="form-container">
+    <form #form="ngForm" (ngSubmit)="onSubmit()" class="form">
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Nome</mat-label>
+        <input matInput [(ngModel)]="formQuarto.nome" name="nome" required>
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Valor</mat-label>
+        <input matInput [(ngModel)]="formQuarto.valor" name="valor" type="number" required>
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput [(ngModel)]="formQuarto.descricao" name="descricao" required></textarea>
+      </mat-form-field>
+      <mat-checkbox class="checkbox" [(ngModel)]="formQuarto.isReservado" name="isReservado">Reservado</mat-checkbox>
+      <mat-checkbox class="checkbox" [(ngModel)]="formQuarto.isAtivo" name="isAtivo">Ativo</mat-checkbox>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Tipo de Quarto</mat-label>
+        <mat-select [(ngModel)]="formQuarto.tipoQuarto" name="tipoQuarto" required>
+          <mat-option *ngFor="let tipo of tiposQuarto" [value]="tipo">
+            {{ tipo.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field class="form-field" appearance="fill">
+        <mat-label>Amenidades</mat-label>
+        <mat-select [(ngModel)]="formQuarto.amenidades" name="amenidades" multiple>
+          <mat-option *ngFor="let amenidade of amenidades" [value]="amenidade">
+            {{ amenidade.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid" class="submit-button">Salvar</button>
+    </form>
+  </div>
+</div>

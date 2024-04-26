@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./quarto-list.component.css']
 })
 export class QuartoListComponent {
-  displayedColumns: string[] = ['id', 'nome', 'valor', 'descricao', 'isReservado', 'isAtivo', 'tipoQuarto', 'amenidades'];
+  displayedColumns: string[] = ['id', 'nome', 'valor', 'descricao', 'isReservado', 'isAtivo', 'tipoQuarto', 'amenidades', 'acoes'];
   dataSource = new MatTableDataSource<Quarto>();
   totalRecords = 0;
   pageSize = 2;
@@ -37,6 +37,18 @@ export class QuartoListComponent {
       });
   }
 
+  delete(id: number) {
+    this.quartoService.delete(id).subscribe(
+      (res) => {
+        console.log(res);
+        this.ngOnInit();
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
+
   count(): void {
     this.quartoService.count()
       .subscribe(total => {
@@ -44,7 +56,7 @@ export class QuartoListComponent {
       });
   }
 
-  paginar(event: any): void { // Any type used here due to potential MatPaginator event changes
+  paginar(event: any): void {
     this.page = event.pageIndex;
     this.pageSize = event.pageSize;
     this.getAllQuartos();

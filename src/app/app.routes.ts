@@ -7,6 +7,10 @@ import { AmenidadeFormComponent } from './components/amenidade/amenidade-form/am
 import { amenidadeResolver } from './components/amenidade/resolver/amenidade.resolver';
 import { QuartoListComponent } from './components/quarto/quarto-list/quarto-list.component';
 import { QuartoFormComponent } from './components/quarto/quarto-form/quarto-form.component';
+import { ServicoListComponent } from './components/servico/servico-list/servico-list.component';
+import { ServicoFormComponent } from './components/servico/servico-form/servico-form.component';
+import { servicoResolver } from './components/servico/resolver/servico.resolver';
+import { quartoResolver } from './components/quarto/resolver/quarto.resolver';
 
 export const routes: Routes = [
     {
@@ -42,5 +46,23 @@ export const routes: Routes = [
     {
         path: 'quarto/form',
         component: QuartoFormComponent
+    },
+    {
+        path: 'quarto/edit/:id',
+        component: QuartoFormComponent,
+        resolve: { quarto: quartoResolver }
+    },
+    {
+        path: 'servico/list',
+        component: ServicoListComponent,
+    },
+    {
+        path: 'servico/form',
+        component: ServicoFormComponent
+    },
+    {
+        path: 'servico/edit/:id',
+        component: ServicoFormComponent,
+        resolve: { servico: servicoResolver }
     }
 ];

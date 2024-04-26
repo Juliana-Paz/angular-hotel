@@ -1,0 +1,65 @@
+<div class="mat-elevation-z8">
+  <!-- Cabeçalho -->
+  <div class="header">
+    <h2>Cadastro de Serviços</h2>
+    <button mat-raised-button color="primary" routerLink="/servico/form">Adicionar Serviço</button>
+  </div>
+
+  <!-- Tabela de Serviços -->
+  <table mat-table [dataSource]="servicos" class="mat-elevation-z8">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let servico">{{ servico.id }}</td>
+    </ng-container>
+
+    <!-- Nome Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let servico">{{ servico.nome }}</td>
+    </ng-container>
+
+    <!-- Descrição Column -->
+    <ng-container matColumnDef="descricao">
+      <th mat-header-cell *matHeaderCellDef>Descrição</th>
+      <td mat-cell *matCellDef="let servico">{{ servico.descricao }}</td>
+    </ng-container>
+
+    <!-- Valor Column -->
+    <ng-container matColumnDef="valor">
+      <th mat-header-cell *matHeaderCellDef>Valor</th>
+      <td mat-cell *matCellDef="let servico">{{ servico.valor }}</td>
+    </ng-container>
+
+    <!-- Ativo Column -->
+    <ng-container matColumnDef="isAtivo">
+      <th mat-header-cell *matHeaderCellDef>Ativo</th>
+      <td mat-cell *matCellDef="let servico">{{ servico.isAtivo ? 'Sim' : 'Não' }}</td>
+    </ng-container>
+
+    <!-- Ações Column -->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let servico">
+        <!-- Botões de Ação (Editar e Excluir) -->
+        <button mat-raised-button color="primary" routerLink="/servico/edit/{{servico.id}}">
+          <mat-icon>edit</mat-icon>
+          Editar
+        </button>
+        <!-- <button mat-raised-button color="warn" (click)="delete(servico.id)">
+          <mat-icon>delete</mat-icon>
+          Excluir
+        </button> -->
+      </td>
+    </ng-container>
+
+    <!-- Define as colunas que serão exibidas na tabela -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let servico; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Paginador -->
+  <mat-paginator [length]="totalRecords" [pageSize]="pageSize" [pageSizeOptions]="[2, 4, 8, 16]" (page)="paginar($event)">
+  </mat-paginator>
+</div>
