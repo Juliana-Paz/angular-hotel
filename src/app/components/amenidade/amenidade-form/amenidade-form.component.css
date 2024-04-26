@@ -1,0 +1,43 @@
+.header {
+    background-color: #f0f0f0;
+    /* Cor de fundo */
+    padding: 10px;
+    /* Espaçamento interno */
+    text-align: center;
+    margin: 0 10px 20px;
+    /* Margens: topo 0, direita 10px, baixo 20px, esquerda 10px */
+    width: calc(100% - 20px);
+    /* Subtrai a margem do card */
+    border-radius: 5px;
+    /* Borda arredondada */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    /* Sombra */
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+}
+
+.form-content {
+    width: 300px;
+    padding: 20px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-field {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 10px;
+}
+
+.submit-button {
+    width: 100%;
+}

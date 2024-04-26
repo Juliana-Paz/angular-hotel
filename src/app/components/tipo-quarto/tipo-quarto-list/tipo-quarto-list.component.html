@@ -1,0 +1,46 @@
+<!-- tipo-quarto-list.component.html -->
+<div class="mat-elevation-z8">
+  <!-- Cabeçalho -->
+  <div class="header">
+    <h2>Cadastro de Tipos de Quarto</h2>
+    <button mat-raised-button color="primary" routerLink="/tipo-quarto/form">Adicionar Tipo Quarto</button>
+  </div>
+
+  <!-- Tabela de Tipos de Quarto -->
+  <table mat-table [dataSource]="tipoQuartos" class="mat-elevation-z8">
+
+    <!-- ID Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let tipoQuarto">{{ tipoQuarto.id }}</td>
+    </ng-container>
+
+    <!-- Nome Column -->
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let tipoQuarto">{{ tipoQuarto.nome }}</td>
+    </ng-container>
+
+    <!-- Ações Column -->
+    <ng-container matColumnDef="acoes">
+      <th mat-header-cell *matHeaderCellDef>Ações</th>
+      <td mat-cell *matCellDef="let tipoQuarto">
+        <!-- Botões de Ação (Editar e Excluir) -->
+        <button mat-raised-button color="primary" routerLink="/tipo-quarto/edit/{{tipoQuarto.id}}">
+          <mat-icon>edit</mat-icon>
+        </button>
+        <button mat-raised-button color="warn" (click)="delete(tipoQuarto.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Define as colunas que serão exibidas na tabela -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let tipoQuarto; columns: displayedColumns;"></tr>
+  </table>
+
+  <!-- Paginador -->
+  <mat-paginator [length]="totalRecords" [pageSize]="pageSize" [pageSizeOptions]="[2, 4, 8, 16]" (page)="paginar($event)">
+  </mat-paginator>
+</div>
