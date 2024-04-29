@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="header">
+      <h2>Cadastro de Cupom de Desconto</h2>
+    </div>
+    <div class="form-container">
+      <form #form="ngForm" (ngSubmit)="onSubmit()" class="form">
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>Código</mat-label>
+          <input matInput [(ngModel)]="formCupomDesconto.codigo" name="codigo" required>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>Descrição</mat-label>
+          <textarea matInput [(ngModel)]="formCupomDesconto.descricao" name="descricao" required></textarea>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>Valor</mat-label>
+          <input matInput [(ngModel)]="formCupomDesconto.valor" name="valor" type="number" required>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>Data de Validade</mat-label>
+          <input matInput [(ngModel)]="formCupomDesconto.dataValidade" name="dataValidade" type="date" required>
+        </mat-form-field>
+        <mat-form-field class="form-field" appearance="fill">
+          <mat-label>Tipo de Quarto</mat-label>
+          <mat-select [(ngModel)]="formCupomDesconto.tipoQuarto" name="tipoQuarto" required>
+            <mat-option *ngFor="let tipo of tiposQuarto" [value]="tipo">
+              {{ tipo.nome }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid" class="submit-button">Salvar</button>
+      </form>
+    </div>
+  </div>
+  

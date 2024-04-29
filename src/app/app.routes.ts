@@ -1,3 +1,4 @@
+import { CupomDesconto } from './models/cupom-desconto.model';
 import { Routes } from '@angular/router';
 import { TipoQuartoListComponent } from './components/tipo-quarto/tipo-quarto-list/tipo-quarto-list.component';
 import { TipoQuartoFormComponent } from './components/tipo-quarto/tipo-quarto-form/tipo-quarto-form.component';
@@ -11,6 +12,9 @@ import { ServicoListComponent } from './components/servico/servico-list/servico-
 import { ServicoFormComponent } from './components/servico/servico-form/servico-form.component';
 import { servicoResolver } from './components/servico/resolver/servico.resolver';
 import { quartoResolver } from './components/quarto/resolver/quarto.resolver';
+import { CupomDescontoListComponent } from './components/cupom-desconto/cupom-desconto-list/cupom-desconto-list.component';
+import { CupomDescontoFormComponent } from './components/cupom-desconto/cupom-desconto-form/cupom-desconto-form.component';
+import { cupomDescontoResolver } from './components/cupom-desconto/resolver/cupom-desconto.resolver';
 
 export const routes: Routes = [
     {
@@ -64,5 +68,18 @@ export const routes: Routes = [
         path: 'servico/edit/:id',
         component: ServicoFormComponent,
         resolve: { servico: servicoResolver }
+    },
+    {
+        path: 'cupom-desconto/list',
+        component: CupomDescontoListComponent,
+    },
+    {
+        path: 'cupom-desconto/form',
+        component: CupomDescontoFormComponent
+    },
+    {
+        path: 'cupom-desconto/edit/:id',
+        component: CupomDescontoFormComponent,
+        resolve: { cupomDesconto: cupomDescontoResolver }
     }
 ];
