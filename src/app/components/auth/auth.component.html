@@ -1,0 +1,17 @@
+<form (ngSubmit)="login()">
+  <input 
+    type="text" 
+    id="email" 
+    name="email" 
+    [(ngModel)]="email" 
+    placeholder="Email"
+  />
+  <input 
+    type="senha" 
+    id="senha" 
+    name="senha" 
+    [(ngModel)]="senha"
+    placeholder="Senha" 
+  />
+  <button type="submit">Login</button>
+</form>

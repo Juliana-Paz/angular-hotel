@@ -15,6 +15,7 @@ import { quartoResolver } from './components/quarto/resolver/quarto.resolver';
 import { CupomDescontoListComponent } from './components/cupom-desconto/cupom-desconto-list/cupom-desconto-list.component';
 import { CupomDescontoFormComponent } from './components/cupom-desconto/cupom-desconto-form/cupom-desconto-form.component';
 import { cupomDescontoResolver } from './components/cupom-desconto/resolver/cupom-desconto.resolver';
+import { AuthComponent } from './components/auth/auth.component';
 
 export const routes: Routes = [
     {
@@ -81,5 +82,9 @@ export const routes: Routes = [
         path: 'cupom-desconto/edit/:id',
         component: CupomDescontoFormComponent,
         resolve: { cupomDesconto: cupomDescontoResolver }
-    }
+    },
+    {
+        path: 'login',
+        component: AuthComponent
+      },
 ];
